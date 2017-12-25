@@ -4,20 +4,25 @@ A chrome-extension to detect the facebook instant game's engine
 
 ## Load extension and run
 
-Download and open chrome => More Tools => Extensions
-=> Load unpacked extension => load this extension
+1. Download this extension and unpacked it: https://github.com/cocos-creator/web-extension-detect-engine/archive/master.zip
 
-Open facebook instant game => engine information show in top 
+2. Open chrome => More Tools(更多工具) => Extensions(扩展程序)
+=> Select the developer mode(开发者模式) => Load unpacked extension(加载已解压的扩展程序) => Load this extension
+
+3. Open facebook instant game => Engine information show in top 
 **NOTE**
 If you can't get engine information, please click PLAY or 马上玩
 
 ## Documentation
  
  ## manifest.json:
-content_scripts: 注入脚本
-  --matches: 脚本注入的url
-  --js: 运行的脚本
-  --all_frames: 为true可注入所有的iframe
+content_scripts: injection script (注入脚本)
+
+--matches: 脚本注入的url
+
+--js: 运行的脚本
+
+--all_frames: 为true可注入所有的iframe
 
 permissions: 允许运行插件的url
 
