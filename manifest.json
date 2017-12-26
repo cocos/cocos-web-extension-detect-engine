@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Get Engine Edition Extension",
-  "description": "Get the facebook instant ganme Engine Edition",
+  "description": "Get the facebook instant game engine version",
   "version": "1.0",
   "permissions": [
     "https://*/*"
