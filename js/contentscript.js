@@ -6,53 +6,44 @@ function main() {
   item.style.position = 'absolute';
   item.style.color = '#FF0000';
 
-  let engine_judge = false;
-  let engine = [
-    [window.phina, 'phina: ', 'VERSION'],
-    [window.Phaser, 'Phaser: ', 'VERSION'],
-    [window.PIXI, 'PIXI: ', 'VERSION'],
-    [window.createjs, 'createjs: ', 'EaselJS', 'PreloadJS', 'SoundJS', 'TweenJS'],
-    [window.THREE, 'THREE'],
-    [window.pc, 'playcanvas :', 'version'],
-    [window.wwf, 'wwf: ', 'version'],
-    [window.CocosEngine, 'Cocos:']
+  const NAME_SPACE = 0;
+  const ENGINE_NAME = 1;
+  const VERSION_KEY = 2;
+
+  let engines = [
+    ['phina', 'phina', 'VERSION'],
+    ['Phaser', 'Phaser', 'VERSION'],
+    ['PIXI', 'PIXI', 'VERSION'],
+    ['createjs', 'createjs'],
+    ['THREE', 'THREE'],
+    ['pc', 'playcanvas', 'version'],
+    ['wwf', 'wwf', 'version'],
+    ['CocosEngine', 'Cocos']
   ];
 
-  item.innerText = '该游戏所用引擎是: ';
+  let engine_name = '';
+  let engine_version = '';
 
-  for (var i = 0; i < 8; i++) {
-    if (engine[i][0]) {
-      engine_judge = true;
+  for (let i = 0; i < engines.length; i++) {
 
-      if (engine[1][0] && engine[2][0]) {
-        item.innerText += engine[1][1] + engine[1][0][engine[1][2]] + ' ';
+    if (window[engines[i][NAME_SPACE]]) {
+      let engine = window[engines[i][NAME_SPACE]];
+      engine_name = engines[i][ENGINE_NAME];
 
-        if (engine[2][0][engine[2][2]]) {
-          item.innerText += engine[2][1] + engine[2][0][engine[2][2]];
-        }
-        engine[2][0] = 0;
+      if (engine[engines[i][VERSION_KEY]]) {
+        engine_version = engine[engines[i][VERSION_KEY]];
       }
-
-      else if (engine[3][0]) {
-        item.innerText += engine[3][1];
-
-        for (var j = 2; j < engine[i].length; j++) {
-          if (engine[3][0][engine[3][j]]) {
-            item.innerText += engine[3][j] + engine[3][0][engine[i][j]].version + ' ';
-          }
-        }
-      }
-
-      else if (engine[7][0]) {
-        item.innerText += engine[i][1] + engine[i][0];
-      }
-
       else {
-        item.innerText += engine[i][1] + engine[i][0][engine[i][2]];
+        if (engines[i][ENGINE_NAME] == 'Cocos') {
+          engine_name = '';
+          engine_version = engine;
+        }
       }
+      break;
     }
   }
-  if (!engine_judge) { item.innerText += '其他引擎' };
+
+  item.innerText = '该游戏所用引擎是: ' + ((engine_name + engine_version) || '未知引擎');
   document.body.insertBefore(item, document.body.firstChild);
 }
 
