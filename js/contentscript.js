@@ -35,10 +35,10 @@ function main() {
       }
       else {
         if (engines[i][ENGINE_NAME] == 'Cocos') {
-          if(engine.substring(0,1) != 'C'){
+          if (engine.substring(0, 1) != 'C') {
             engine_name = 'Cocos creator ';
           }
-          else{
+          else {
             engine_name = '';
           }
 
@@ -52,6 +52,7 @@ function main() {
   item.innerText = '该游戏所用引擎是: ' + ((engine_name + engine_version) || '未知引擎');
   document.body.insertBefore(item, document.body.firstChild);
 }
-
-script.innerText = main.toString() + ';main();'
-document.body.appendChild(script);
+setTimeout(function () {
+  script.innerText = main.toString() + ';main();'
+  document.body.appendChild(script);
+}, 3000);
