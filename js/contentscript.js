@@ -35,7 +35,13 @@ function main() {
       }
       else {
         if (engines[i][ENGINE_NAME] == 'Cocos') {
-          engine_name = '';
+          if(engine.substring(0,1) != 'C'){
+            engine_name = 'Cocos creator ';
+          }
+          else{
+            engine_name = '';
+          }
+
           engine_version = engine;
         }
       }
