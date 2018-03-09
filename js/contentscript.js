@@ -49,7 +49,7 @@ function main() {
       }
       else {
         if (engines[i][ENGINE_NAME] == 'Cocos') {
-          if (engine.substring(0, 1) != 'C') {
+          if (engine[0] != 'C') {
             engine_name = 'Cocos creator ';
           }
           else {
@@ -67,5 +67,5 @@ function main() {
   document.body.insertBefore(item, document.body.firstChild);
 }
 
-script.innerText = main.toString() + ';var t1 = setInterval("main()", 1000);'
+script.innerText = main.toString() + ';var t1 = setInterval(main, 1000);'
 document.body.appendChild(script);
