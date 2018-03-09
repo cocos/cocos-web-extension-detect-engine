@@ -1,11 +1,17 @@
 let script = document.createElement('script');
 
 function main() {
-  let item = document.createElement('h1');
-  item.style['z-index'] = '999';
-  item.style.position = 'absolute';
-  item.style.color = '#FF0000';
-
+  let item = null;
+  if(document.getElementById('engine')){
+    item = document.getElementById('engine');
+  }else{
+    item = document.createElement('h1');
+    item.id = 'engine';
+    item.style['z-index'] = '999';
+    item.style.position = 'absolute';
+    item.style.color = '#FF0000';
+  }
+ 
   const NAME_SPACE = 0;
   const ENGINE_NAME = 1;
   const VERSION_KEY = 2;
@@ -18,11 +24,19 @@ function main() {
     ['THREE', 'THREE'],
     ['pc', 'playcanvas', 'version'],
     ['wwf', 'wwf', 'version'],
-    ['CocosEngine', 'Cocos']
+    ['CocosEngine', 'Cocos'],
+    ['GC', 'Game Closure', ''],
+    ['egret', 'egret', ''],
+    ['cr_getC2Runtime', 'Construct 2', ''],
+    ['Laya','Laya','version']
   ];
 
   let engine_name = '';
   let engine_version = '';
+
+  if (!document.querySelector('canvas') || document.querySelector('canvas').width < 200 || document.querySelector('canvas').height < 200 ){
+    engine_name = 'DOM';
+  }
 
   for (let i = 0; i < engines.length; i++) {
 
@@ -52,7 +66,6 @@ function main() {
   item.innerText = '该游戏所用引擎是: ' + ((engine_name + engine_version) || '未知引擎');
   document.body.insertBefore(item, document.body.firstChild);
 }
-setTimeout(function () {
-  script.innerText = main.toString() + ';main();'
-  document.body.appendChild(script);
-}, 3000);
+
+script.innerText = main.toString() + ';var t1 = setInterval("main()", 1000);'
+document.body.appendChild(script);
