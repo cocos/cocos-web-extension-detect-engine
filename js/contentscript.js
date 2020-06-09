@@ -2,15 +2,17 @@
   let script = document.createElement('script');
 
   function main() {
-    let item = null;
-    if(document.getElementById('engine')){
-      item = document.getElementById('engine');
-    }else{
-      item = document.createElement('h1');
-      item.id = 'engine';
-      item.style['z-index'] = '999';
+    const ID = 'web-game-engine-detector';
+    const Z_INDEX = 1;
+
+    let item = document.getElementById(ID);
+    if (!item) {
+      item = document.createElement('h2');
+      item.id = ID;
+      item.style.zIndex = Z_INDEX;
       item.style.position = 'absolute';
       item.style.color = '#FF0000';
+      item.style.backgroundColor = 'white';
     }
 
     const NAME_SPACE = 0;
@@ -29,7 +31,7 @@
       ['GC', 'Game Closure', ''],
       ['egret', 'Egret', 'egret.Capabilities.engineVersion'],
       ['cr_getC2Runtime', 'Construct 2', ''],
-      ['Laya','Laya','version']
+      ['Laya', 'Laya', 'version'],
     ];
 
     let engine_name = '';
@@ -37,6 +39,7 @@
 
     if (!document.querySelector('canvas') || document.querySelector('canvas').width < 200 || document.querySelector('canvas').height < 200 ){
       engine_name = 'DOM';
+      /*item.style.zIndex = Z_INDEX - 1;    don't cover other iframe */
     }
 
     for (let i = 0; i < engines.length; i++) {
@@ -73,9 +76,12 @@
     }
 
     item.innerText = '该游戏所用引擎是: ' + ((engine_name + ' ' + engine_version) || '未知引擎');
+    if (!engine_name) {
+      /*item.style.zIndex = Z_INDEX - 1;    don't cover other iframe */
+    }
     document.body.insertBefore(item, document.body.firstChild);
   }
 
-  script.innerText = main.toString() + ';var t1 = setInterval(main, 1000);'
+  script.innerText = main.toString() + '; main(); var t1 = setInterval(main, 1000);';
   document.body.appendChild(script);
 })();
