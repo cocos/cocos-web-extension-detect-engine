@@ -7,11 +7,9 @@
 
     let item = document.getElementById(ID);
     if (!item) {
-      item = document.createElement('h2');
+      item = document.createElement('h3');
       item.id = ID;
-      item.style.zIndex = Z_INDEX;
-      item.style.position = 'absolute';
-      item.style.color = '#FF0000';
+      item.style.color = '#0000FF';
       item.style.backgroundColor = 'white';
     }
 
@@ -37,13 +35,7 @@
     let engine_name = '';
     let engine_version = '';
 
-    if (!document.querySelector('canvas') || document.querySelector('canvas').width < 200 || document.querySelector('canvas').height < 200 ){
-      engine_name = 'DOM';
-      /*item.style.zIndex = Z_INDEX - 1;    don't cover other iframe */
-    }
-
     for (let i = 0; i < engines.length; i++) {
-
       if (window[engines[i][NAME_SPACE]]) {
         let engine = window[engines[i][NAME_SPACE]];
         engine_name = engines[i][ENGINE_NAME];
@@ -64,10 +56,6 @@
           if (engine[0] !== 'C') {
             engine_name = 'Cocos Creator ';
           }
-          else {
-            engine_name = '';
-          }
-
           engine_version = engine;
         }
 
@@ -75,10 +63,16 @@
       }
     }
 
-    item.innerText = '该游戏所用引擎是: ' + ((engine_name + ' ' + engine_version) || '未知引擎');
-    if (!engine_name) {
-      /*item.style.zIndex = Z_INDEX - 1;    don't cover other iframe */
+    let canvas = document.querySelector('canvas');
+    let hasGameCanvas = canvas && canvas.width > 200 && canvas.height > 200;
+
+    if (!engine_name && !hasGameCanvas){
+      item.innerText = '当前网页层级不含游戏或者游戏只用 DOM 实现';
     }
+    else {
+      item.innerText = '当前网页层级所用引擎是：' + (engine_name || '未知引擎') + ' ' + engine_version;
+    }
+
     document.body.insertBefore(item, document.body.firstChild);
   }
 
