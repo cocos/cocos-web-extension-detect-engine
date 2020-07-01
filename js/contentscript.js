@@ -3,7 +3,7 @@
 
   function main() {
     const ID = 'web-game-engine-detector';
-    const Z_INDEX = 1;
+    const Z_INDEX = 999;
 
     let item = document.getElementById(ID);
     if (!item) {
@@ -11,6 +11,7 @@
       item.id = ID;
       item.style.color = '#0000FF';
       item.style.backgroundColor = 'white';
+      item.style.zIndex = Z_INDEX;
     }
 
     const NAME_SPACE = 0;
