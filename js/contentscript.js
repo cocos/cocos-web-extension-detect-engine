@@ -32,6 +32,7 @@
       ['cr_getC2Runtime', 'Construct 2', ''],
       ['Laya', 'Laya', 'version'],
       ['UnityLoader', 'Unity WebGL', ''],
+      ['lime', 'OpenFl', ''],
     ];
 
     let engine_name = '';
