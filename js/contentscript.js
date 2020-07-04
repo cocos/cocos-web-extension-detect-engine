@@ -31,6 +31,7 @@
       ['egret', 'Egret', 'egret.Capabilities.engineVersion'],
       ['cr_getC2Runtime', 'Construct 2', ''],
       ['Laya', 'Laya', 'version'],
+      ['UnityLoader', 'Unity WebGL', ''],
     ];
 
     let engine_name = '';
