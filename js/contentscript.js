@@ -11,6 +11,7 @@
       item.id = ID;
       item.style.color = '#0000FF';
       item.style.backgroundColor = 'white';
+      item.style.position = 'relative';
       item.style.zIndex = Z_INDEX;
     }
 
@@ -24,7 +25,7 @@
       ['PIXI', 'PIXI', 'VERSION'],
       ['createjs', 'createjs'],
       ['THREE', 'THREE'],
-      ['pc', 'playcanvas', 'version'],
+      ['pc', 'PlayCanvas', 'version'],
       ['wwf', 'wwf', 'version'],
       ['CocosEngine', 'Cocos'],
       ['GC', 'Game Closure', ''],
@@ -80,5 +81,7 @@
   }
 
   script.innerText = main.toString() + '; main(); var t1 = setInterval(main, 1000);';
+  /* script.innerText = main.toString() + '; main();'; */
+
   document.body.appendChild(script);
 })();
