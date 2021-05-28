@@ -34,6 +34,7 @@
       ['Laya', 'Laya', 'version'],
       ['UnityLoader', 'Unity WebGL', ''],
       ['lime', 'OpenFl', ''],
+      ['ENOWSDK', '希沃 DOM 实现', 'version'],
     ];
 
     let engine_name = '';
