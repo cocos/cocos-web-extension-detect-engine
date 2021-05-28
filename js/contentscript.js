@@ -35,6 +35,7 @@
       ['UnityLoader', 'Unity WebGL', ''],
       ['lime', 'OpenFl', ''],
       ['ENOWSDK', '希沃 DOM 实现', 'version'],
+      ['Konva', 'Konva', 'version'],
     ];
 
     let engine_name = '';
@@ -43,28 +44,43 @@
     for (let i = 0; i < engines.length; i++) {
       if (window[engines[i][NAME_SPACE]]) {
         let engine = window[engines[i][NAME_SPACE]];
-        engine_name = engines[i][ENGINE_NAME];
+        if (engine_name) {
+          engine_name += ' + '
+        }
+        engine_name += engines[i][ENGINE_NAME];
         let versionKey = engines[i][VERSION_KEY];
         if (versionKey) {
           if (engine[versionKey]) {
-            engine_version = engine[versionKey];
+            if (engine_version) {
+              engine_version += ' + '
+            }
+            engine_version += engine[versionKey];
           }
           else {
             try {
               let v = Function ('return ' + versionKey)();
-              if (v) engine_version = v;
+              if (v) {
+                if (engine_version) {
+                  engine_version += ' + '
+                }
+                engine_version += v;
+              }
             }
             catch (e) {}
           }
         }
         else if (engines[i][ENGINE_NAME] === 'Cocos') {
           if (engine[0] !== 'C') {
-            engine_name = 'Cocos Creator ';
+            if (engine_name) {
+              engine_name += ' + '
+            }
+            engine_name += 'Cocos Creator ';
           }
-          engine_version = engine;
+          if (engine_version) {
+            engine_version += ' + '
+          }
+          engine_version += engine;
         }
-
-        break;
       }
     }
 
@@ -75,7 +91,7 @@
       item.innerText = '当前网页层级不含游戏或者游戏只用 DOM 实现';
     }
     else {
-      item.innerText = '当前网页层级所用引擎是：' + (engine_name || '未知引擎') + ' ' + engine_version;
+      item.innerText = '当前网页层级所用引擎：' + (engine_name || '未知引擎') + ' 版本：' + engine_version;
     }
 
     document.body.insertBefore(item, document.body.firstChild);
