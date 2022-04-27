@@ -25,6 +25,7 @@
       ['PIXI', 'PIXI', 'VERSION'],
       ['createjs', 'createjs'],
       ['THREE', 'THREE'],
+      ['__THREE__', 'THREE', '__THREE__'],
       ['pc', 'PlayCanvas', 'version'],
       ['wwf', 'wwf', 'version'],
       ['CocosEngine', 'Cocos'],
