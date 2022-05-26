@@ -26,6 +26,7 @@
       ['createjs', 'createjs'],
       ['THREE', 'THREE'],
       ['__THREE__', 'THREE', '__THREE__'],
+      ['View3D', 'View3D'],
       ['pc', 'PlayCanvas', 'version'],
       ['wwf', 'wwf', 'version'],
       ['CocosEngine', 'Cocos'],
