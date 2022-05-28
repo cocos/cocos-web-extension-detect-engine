@@ -38,6 +38,7 @@
       ['lime', 'OpenFl', ''],
       ['ENOWSDK', '希沃 DOM 实现', 'version'],
       ['Konva', 'Konva', 'version'],
+      ['marmoset', 'Marmoset Viewer'],
     ];
 
     let engine_name = '';
