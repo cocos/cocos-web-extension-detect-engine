@@ -39,6 +39,7 @@
       ['ENOWSDK', '希沃 DOM 实现', 'version'],
       ['Konva', 'Konva', 'version'],
       ['marmoset', 'Marmoset Viewer'],
+      ['kha', 'Kha'],
     ];
 
     let engine_name = '';
